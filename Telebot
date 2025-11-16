@@ -1,0 +1,91 @@
+import telebot
+import random
+from telebot import TeleBot
+
+import time
+
+# @NickyFed
+
+token = "8289284436:AAE1R_FAHtPmNQT6xCBs_ERpQ_IkF8fhECA"
+bot = telebot.TeleBot(token)
+
+citat = [
+    'Любовь одна, а дота 2',
+    'Лучше светлое пиво, чем темное будушее',
+    'Как говорил мой дед; "я твой дед"',
+    'Чем больше дача - джими джими ача ача',
+    'Арбуз не овощь - леди баг спешит на помощь'
+]
+# функция бросить кубик
+
+
+@bot.message_handler(commands=['кубик'])
+def dice(message):
+    bot.send_message(message.chat.id, str(random.randint(1,6)))
+
+
+
+coin = [
+    'Орел',
+    'Решка'
+]
+
+
+@bot.message_handler(commands=['timer'])
+def set_timer(message):
+    try:
+        seconds = int(message.text.split()[1])
+        if seconds > 10:
+            bot.send_message(message.chat.id, 'Слишком долго! Максимум 5 минут!')
+            return
+        bot.send_message(message.chat.id, f"Таймер установлен на {seconds} секунд")
+        time.sleep(seconds)
+        bot.send_message(message.chat.id, f'Время вышло!')
+    except:
+        bot.send_message(message.chat.id, f'Чтобы задать таймер используй команду /timer')
+
+@bot.message_handler(commands=['start'])
+def startt(message):
+    bot.send_message(message.chat.id, 'Привет! Я Ник. Если хочешь побольше узнать о командах бота пропиши /help.')
+
+@bot.message_handler(commands=['help'])
+def helpp(message):
+    bot.send_message(message.chat.id, 'список команд:\n /start (перезагрузка бота)\n /coin (кидание монетки)\n /citat (смешные цитаты)/n ')
+
+@bot.message_handler(commands=['citat'])
+def quotte(message):
+    bot.send_message(message.chat.id, random.choice(citat))
+
+@bot.message_handler(commands=['coin'])
+def coinn(message):
+    bot.send_message(message.chat.id, random.choice(coin))
+
+
+
+@bot.message_handler(content_types=['text'])
+def textt(message):
+    text = message.text.lower()
+    if text == 'Привет':
+        bot.send_message(message.chat.id,'Дарова')
+
+
+@bot.message_handler(content_types=['voice'])
+def handle_voice(message):
+    bot.reply_to(message,'Я пока не умею распозновать голос.Напиши текстом!')
+
+
+
+
+bot.polling()
+
+
+
+
+
+
+
+
+
+
+
+
